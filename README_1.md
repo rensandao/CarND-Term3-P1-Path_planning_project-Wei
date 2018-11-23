@@ -2,7 +2,9 @@
 
 ### Introduction
 
-### Implementation(Problems Description + solution +  visualized graph)
+The goal of this project is implementing a path planner.
+
+### Implementation(Problems Description + solution +  visualized graph) 
 
 * Problems Description
   
