@@ -35,7 +35,12 @@ The prediction code snippet can be seen in lines[(*253-302*)](./src/main.cpp#L25
 
 2. Behavior 
 
-This module is based on prediction and map location. It mainly decides whether to speed up or slow down, whether to change lane, left or right?
+This module is based on prediction and map location. The several behaviors in our case are:
+  * KL
+  * LC
+  * RC
+
+It mainly decides whether to change lane? left or right? whether to speed up or slow down? 
 
 for our case, we wish the car drive itself as fast as possible, so if the ego car encounter a car of same lane, the first chioce is instantly changing with premise of safety. And if the situation don't allow, then it tends to speed down for not colliding with the front car. 
 
@@ -43,7 +48,7 @@ Another stategy is that we wish the ego car drive in the center lane if no other
 
 Code can be seen in lines[(*346-366*)](./src/main.cpp#346)
 
-
+As is talk 
 
 
 ### Conclusion
