@@ -31,7 +31,7 @@ Prediction module mainly makes decision and provide important information to Beh
 The implementation is by setting flag that represents wether it is safe distance or not. For example, `left_danger_flag` 
 is false as default. That means the left lane of the current lane is safe to change. More concretely in this situation, the safe distance is not less than 30 meters both in front and behind us. Same meanning with `forward_danger` and `right_dange_danger`.
 
-The prediction code snippet can be seen in lines[(253-302)](./src/main.cpp#L253)
+The prediction code snippet can be seen in lines[(*253-302*)](./src/main.cpp#L253)
 
 2. Behavior 
 
@@ -41,7 +41,7 @@ for our case, we wish the car drive itself as fast as possible, so if the ego ca
 
 Another stategy is that we wish the ego car drive in the center lane if no other cars arround it.
 
-Code can be seen in lines[(346-366)](./src/main.cpp#346)
+Code can be seen in lines[(*346-366*)](./src/main.cpp#346)
 
 
 
