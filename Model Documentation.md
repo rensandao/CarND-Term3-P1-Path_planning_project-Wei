@@ -26,8 +26,12 @@ Path Planning mainly contains three modules:
 
 1. prediction
   
-Prediction module mainly makes decision and provide important information to Behavior Module and Trajectory Generation Module base on sensor fusion data. Here in case of how to deal with changing lane safely, we can dig out at least three important references. First, Is ego car keeps safe distance from the front car in current lane. In code, Second, Is it safe to change to left lane if need. Third, Is it safe to change to right lane if need.
-  
+Prediction module mainly makes decision and provide important information to Behavior Module and Trajectory Generation Module base on sensor fusion data. Here in case of how to deal with changing lane safely, we can dig out at least three important references. First, Is ego car keeps safe distance from the front car in current lane.  Second, Is it safe to change to left lane if need. Third, Is it safe to change to right lane if need. 
+
+The implementation is by setting flag that represents wether it is safe distance or not. For example, `left_danger_flag` 
+is false as default. That means the left lane of the current lane is safe to change. More concretely in this situation, the safe distance is not less than 30 meters both in front and behind us. Same meanning with `forward_danger` and `right_dange_danger`.
+
+The prediction code snippet can be seen in [lines[253-302]](./src/main.cpp#L253)
 
 
 
