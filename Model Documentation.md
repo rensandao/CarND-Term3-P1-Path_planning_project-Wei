@@ -15,4 +15,6 @@ steps: How to implement every problem, with description and code or anything els
 
 * Trajectory Generation
 
+### reflection(on how to generate paths)
+
 ### Conclusion
