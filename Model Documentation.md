@@ -52,8 +52,32 @@ With only three behaviors consider, it surely have much more to improve. Next I 
 
 3. Tajectory Generation
 
+This module generates the trajectory based on Map Location, Prediction and Behavior. Here they include the car speed , lane state, path points, car coordinates and so on. In order to reduce high jerk or accelertaion, we could use the last two points of the previous path as starting reference. At the same time, Transformed function from Frenet to Cartian is very convient and necessary for spline calculation in calculating coordinates.
 
+To improve the trajectory's reliability, some end points of previous trajectory are send to next trajecty. And the rest of the next trajectory are filled with coordinates by evaluating the spline and coordinates transforming.
+
+Code of this part is in lines[(*370-479*)](./src/main.cpp*370). 
 
 
 
 ### Conclusion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
