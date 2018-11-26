@@ -4,7 +4,7 @@
 
 The goal of this project is implementing a path planner.
 
-### Implementation(Problems Description + solution +  visualized graph)  
+### Theory(Problems Description + solution +  visualized graph)  
 steps: How to implement every problem, with description and code or anything else
 
 * Problems Description
@@ -18,7 +18,11 @@ steps: How to implement every problem, with description and code or anything els
 ### reflection(on how to generate paths)
 Firstly, Thanks to the Q&A video content offered by Aaron and David. They helped me understand how to analyze trajectory planning and turn it in code. SO I chose the basic code provided in video to add more prediction and planning functions. 
 
-The main 
+Path Planning mainly contains three modules: 
+
+* Prediction
+* Behavior planning
+* trajectory generation
 
 
 
