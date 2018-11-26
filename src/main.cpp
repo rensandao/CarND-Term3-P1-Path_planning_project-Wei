@@ -55,11 +55,9 @@ int ClosestWaypoint(double x, double y, const vector<double> &maps_x, const vect
 			closestLen = dist;
 			closestWaypoint = i;
 		}
-
 	}
 
 	return closestWaypoint;
-
 }
 
 int NextWaypoint(double x, double y, double theta, const vector<double> &maps_x, const vector<double> &maps_y)
@@ -73,16 +71,16 @@ int NextWaypoint(double x, double y, double theta, const vector<double> &maps_x,
 	double heading = atan2((map_y-y),(map_x-x));
 
 	double angle = fabs(theta-heading);
-  angle = min(2*pi() - angle, angle);
+	angle = min(2*pi() - angle, angle);
 
-  if(angle > pi()/4)
-  {
-    closestWaypoint++;
-  if (closestWaypoint == maps_x.size())
-  {
-    closestWaypoint = 0;
-  }
-  }
+	if(angle > pi()/4)
+	{
+		closestWaypoint++;
+		if (closestWaypoint == maps_x.size())
+		{
+		closestWaypoint = 0;
+		}
+	}
 
   return closestWaypoint;
 }
@@ -203,8 +201,8 @@ int main() {
 
   //three lanes: 0-1-2
   int lane =1;
-
-	double ref_vel = 0;//49.5; //mph
+	
+  double ref_vel = 0;//49.5; //mph
 
   h.onMessage([&map_waypoints_x,&map_waypoints_y,&map_waypoints_s,&map_waypoints_dx,&map_waypoints_dy,&lane,&ref_vel](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                       uWS::OpCode opCode) {
@@ -299,7 +297,7 @@ int main() {
                   right_danger_flag |= (car_s - 30 < check_car_s) && (car_s + 30 > check_car_s);
                 else if(2 == lane)
                   forward_danger_flag |= (check_car_s > car_s) && ((check_car_s - car_s) < 30);
-					  }
+	    	}
             
             /*
             //Method_2;
