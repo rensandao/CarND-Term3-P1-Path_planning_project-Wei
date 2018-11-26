@@ -23,8 +23,7 @@ Path Planning mainly contains three modules:
 * Prediction
 * Behavior Planning
 * Trajectory Generation
-
-1. prediction
+#### prediction
   
 Prediction module mainly makes decision and provide important information to Behavior Module and Trajectory Generation Module base on sensor fusion data. Here in case of how to deal with changing lane safely, we can dig out at least three important references. First, Is ego car keeps safe distance from the front car in current lane.  Second, Is it safe to change to left lane if need. Third, Is it safe to change to right lane if need. 
 
@@ -33,7 +32,7 @@ is false as default. That means the left lane of the current lane is safe to cha
 
 The prediction code snippet can be seen in lines[(*253-302*)](./src/main.cpp#L253)
 
-2. Behavior 
+#### Behavior 
 
 This module is based on prediction and map location. The several behaviors in our case are:
   * KL
@@ -50,7 +49,7 @@ Code can be seen in lines[(*346-366*)](./src/main.cpp#346)
 
 With only three behaviors consider, it surely have much more to improve. Next I will include another two states, `PLCL` and `PLCR`.
 
-3. Tajectory Generation
+#### Tajectory Generation
 
 This module generates the trajectory based on Map Location, Prediction and Behavior. Here they include the car speed , lane state, path points, car coordinates and so on. In order to reduce high jerk or accelertaion, we could use the last two points of the previous path as starting reference. At the same time, Transformed function from Frenet to Cartian is very convient and necessary for spline calculation in calculating coordinates.
 
@@ -59,11 +58,13 @@ To improve the trajectory's reliability, some end points of previous trajectory 
 Code of this part is in lines[(*370-479*)](./src/main.cpp*370). 
 
 
-
 ### Conclusion
 
-
-
+The final path planner can drive well and meet the requirements.But it's not perfect. There are lot of works to do. 
+* As is mentioned above, if more behavior states are considered, more good effect wil appear such as faster efficiency.
+* Emergency braking parameters tuning and strategy in more complicate situation.
+* Prediction. More methods to dig the sensor fusion data, such as from listed papers in course link.
+* Others.
 
 
 
