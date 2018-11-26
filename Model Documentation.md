@@ -33,6 +33,17 @@ is false as default. That means the left lane of the current lane is safe to cha
 
 The prediction code snippet can be seen in [lines[253-302]](./src/main.cpp#L253)
 
+2. Behavior 
+
+This module is based on prediction and map location. It mainly decides whether to speed up or slow down, whether to change lane, left or right?
+
+for our case, we wish the car drive itself as fast as possible, so if the ego car encounter a car of same lane, the first chioce is instantly changing with premise of safety. And if the situation don't allow, then it tends to speed down for not colliding with the front car. 
+
+Another stategy is that we wish the ego car drive in the center lane if no other cars arround it.
+
+Code can be seen in lines[346-366](./src/main.cpp#346)
+
+
 
 
 ### Conclusion
