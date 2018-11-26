@@ -37,8 +37,8 @@ The prediction code snippet can be seen in lines[(*253-302*)](./src/main.cpp#L25
 
 This module is based on prediction and map location. The several behaviors in our case are:
   * KL
-  * LC
-  * RC
+  * LCL
+  * LCR
 
 It mainly decides whether to change lane? left or right? whether to speed up or slow down? 
 
@@ -48,7 +48,12 @@ Another stategy is that we wish the ego car drive in the center lane if no other
 
 Code can be seen in lines[(*346-366*)](./src/main.cpp#346)
 
-As is talk 
+With only three behaviors consider, it surely have much more to improve. Next I will include another two states, `PLCL` and `PLCR`.
+
+3. Tajectory Generation
+
+
+
 
 
 ### Conclusion
