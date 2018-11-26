@@ -342,10 +342,10 @@ int main() {
           // located in dangeous distance. Then choose the second stategy which is to stay in current lane and slow down, 
           // avoiding collide with the car ahead. 
           if(forward_danger_flag){
-            if(!right_danger_flag && lane !=2){
+            if(!right_danger_flag && lane != 2){
               lane++;
             }
-            else if(!left_danger_flag && lane !=0){
+            else if(!left_danger_flag && lane != 0){
               lane--;
             }else{
               ref_vel -= .224;
@@ -353,8 +353,8 @@ int main() {
           }
           //Another stategy is that making ego car moving in the center lane as the first choice.
           else{
-            if(lane!=1){
-              if((lane == 0 && ! right_danger_flag) || (lane == 2 && !left_danger_flag)){
+            if(lane != 1){
+              if((lane == 0 && !right_danger_flag) || (lane == 2 && !left_danger_flag)){
                 lane = 1;
               }
             }
