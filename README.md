@@ -17,7 +17,7 @@ Path Planning mainly contains three modules:
 * Behavior Planning
 * Trajectory Generation
 
-#### prediction
+#### 1 prediction
   
 Prediction module mainly makes decision and provide important information to Behavior Module and Trajectory Generation Module base on sensor fusion data. Here in case of how to deal with changing lane safely, we can dig out at least three important references. First, Is ego car keeps safe distance from the front car in current lane.  Second, Is it safe to change to left lane if need. Third, Is it safe to change to right lane if need. 
 
