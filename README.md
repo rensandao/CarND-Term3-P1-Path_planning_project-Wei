@@ -55,7 +55,7 @@ Code of this part is in lines[(*370-479*)](./src/main.cpp*370).
 ### Conclusion
 
 The final path planner can drive well and meet the requirements.But it's not perfect. There are lot of works to do. 
-* As is mentioned above, if more behavior states are considered, more good effect wil appear such as faster efficiency.
+* As is mentioned above, if more behavior states are considered, more good effect will appear such as faster efficiency.
 * Emergency braking parameters tuning and strategy in more complicate situation.
 * Prediction. More methods to dig the sensor fusion data, such as from listed papers in course link.
 * Others.
