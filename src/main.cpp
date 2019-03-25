@@ -40,24 +40,21 @@ double distance(double x1, double y1, double x2, double y2) {
 	return sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 }
 
-int ClosestWaypoint(double x, double y, const vector<double> &maps_x, const vector<double> &maps_y)
-{
+int ClosestWaypoint(double x, double y, const vector<double> &maps_x, const vector<double> &maps_y) {
 
 	double closestLen = 100000; //large number
 	int closestWaypoint = 0;
 
-	for(int i = 0; i < maps_x.size(); i++)
-	{
+	for(int i = 0; i < maps_x.size(); i++) {
 		double map_x = maps_x[i];
 		double map_y = maps_y[i];
 		double dist = distance(x,y,map_x,map_y);
-		if(dist < closestLen)
-		{
+		if(dist < closestLen) {
 			closestLen = dist;
 			closestWaypoint = i;
 		}
 	}
-
+	
 	return closestWaypoint;
 }
 
@@ -73,15 +70,13 @@ int NextWaypoint(double x, double y, double theta, const vector<double> &maps_x,
 	double angle = fabs(theta-heading);
 	angle = min(2*pi() - angle, angle);
 
-	if(angle > pi()/4)
-	{
+	if(angle > pi()/4) {
 		closestWaypoint++;
-		if (closestWaypoint == maps_x.size())
-		{
-		closestWaypoint = 0;
+		if (closestWaypoint == maps_x.size()) {
+			closestWaypoint = 0;
 		}
 	}
-
+	
   return closestWaypoint;
 }
 
@@ -199,8 +194,9 @@ int main() {
 	
   double ref_vel = 0;//49.5; //mph
 
-  h.onMessage([&map_waypoints_x,&map_waypoints_y,&map_waypoints_s,&map_waypoints_dx,&map_waypoints_dy,&lane,&ref_vel](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
-                      uWS::OpCode opCode) {
+  h.onMessage([&map_waypoints_x, &map_waypoints_y, &map_waypoints_s,
+							 &map_waypoints_dx, &map_waypoints_dy, &lane,&ref_vel](uWS::WebSocket<uWS::SERVER> ws, char *data, 
+																																	 size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
@@ -297,34 +293,29 @@ int main() {
             /*
             //Method_2;
             //Use a little different logic, but for now  get some unsteady. Will handle with it soon. 
-            if(1 == lane){
-              if(d>0 && d <= 4){
+            if (1 == lane) {
+              if (d>0 && d <= 4) {
                 left_danger_flag |= (car_s - 30 < check_car_s) && (car_s + 30 > check_car_s);
-              }
-              else if(d > 4 && d < 8){
+              } else if (d > 4 && d < 8) {
                 forward_danger_flag |= (check_car_s > car_s) && ((check_car_s - car_s) < 30);
-              }
-              else if(d > 8 && d < 12){
+              } else if (d > 8 && d < 12){
                 right_danger_flag |= (car_s - 30 < check_car_s) && (car_s + 30 > check_car_s);
               }
-            }else if(0 == lane){
-              if(d>0 && d <4){
+            } else if (0 == lane) {
+              if (d>0 && d <4) {
                 forward_danger_flag |= (check_car_s > car_s) && ((check_car_s - car_s) < 30);
-              }
-              else if(d > 4 && d < 8){
+              } else if (d > 4 && d < 8) {
                 right_danger_flag |= (car_s - 30 < check_car_s) && (car_s + 30 > check_car_s);
-              }
-              //else if(d > 8 && d < 12){
+              }//else if(d > 8 && d < 12) {
               //  continue;
               //}
-            }else if(2 == lane){
+            } else if (2 == lane) {
               //if(d>0 && d <4){
               //  continue;
               //}
-              if(d > 4 && d < 8){
+              if (d > 4 && d < 8) {
                 right_danger_flag |= (car_s - 30 < check_car_s) && (car_s + 30 > check_car_s);
-              }
-              else if(d > 8 && d < 12){
+              } else if(d > 8 && d < 12) {
                 forward_danger_flag |= (check_car_s > car_s) && ((check_car_s - car_s) < 30);
               }
             }
@@ -336,24 +327,22 @@ int main() {
           // if other cars is ahead, the first stategy is to change to another lane. If other cars are
           // located in dangeous distance. Then choose the second stategy which is to stay in current lane and slow down, 
           // avoiding collide with the car ahead. 
-          if(forward_danger_flag){
-            if(!right_danger_flag && lane != 2){
+          if (forward_danger_flag) {
+            if (!right_danger_flag && lane != 2) {
               lane++;
-            }
-            else if(!left_danger_flag && lane != 0){
+            } else if(!left_danger_flag && lane != 0) {
               lane--;
-            }else{
+            } else {
               ref_vel -= .224;
             }
-          }
-          //Another stategy is that making ego car moving in the center lane as the first choice.
-          else{
-            if(lane != 1){
-              if((lane == 0 && !right_danger_flag) || (lane == 2 && !left_danger_flag)){
+          } else {
+            //Another stategy is that making ego car moving in the center lane as the first choice.
+            if (lane != 1) {
+              if ((lane == 0 && !right_danger_flag) || (lane == 2 && !left_danger_flag)) {
                 lane = 1;
               }
             }
-            if (ref_vel < 49.5){
+            if (ref_vel < 49.5) {
               ref_vel += .224;
             }
           } 
